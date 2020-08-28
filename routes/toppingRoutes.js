@@ -8,6 +8,13 @@ router.get('/toppings', (req, res) => {
     .catch(err => console.log(err))
 })
 
+router.get('/toppings/:id', (req, res) => {
+  Topping.findOne({ where: { id: req.params.id } })
+    .then(topping => res.json(topping))
+    .catch(err => console.log(err))
+})
+
+
 router.post('/toppings', (req, res) => {
   Topping.create(req.body)
     .then(toppings => res.json(toppings))
